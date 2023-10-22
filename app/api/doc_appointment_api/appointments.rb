@@ -42,11 +42,19 @@ module DocAppointmentAPI
           appointment = Appointment.find(params[:id])
 
           if appointment.update(declared(params, include_missing: false))
-            status :no_content
+            present appointment
           else
             status :unprocessable_entity
             { errors: appointment.errors }
           end
+        end
+
+        desc 'Delete an appointment'
+
+        delete do
+          Appointment.find(params[:id]).destroy
+
+          status :no_content
         end
       end
     end

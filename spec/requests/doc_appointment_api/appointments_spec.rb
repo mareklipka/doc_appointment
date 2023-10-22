@@ -96,10 +96,10 @@ describe DocAppointmentAPI::Appointments do
         }
       end
 
-      it 'returns a non content response' do
+      it 'returns a successful' do
         request
 
-        expect(response).to have_http_status(:no_content)
+        expect(response).to have_http_status(:ok)
       end
 
       it 'updates the appointment' do
@@ -124,6 +124,35 @@ describe DocAppointmentAPI::Appointments do
         request
 
         expect(response.body).to include('errors')
+      end
+    end
+  end
+
+  describe 'DELETE /api/v1/appointments/:id' do
+    subject(:request) do
+      delete "/api/appointments/#{appointment.id}"
+    end
+
+    let(:appointment) { create(:appointment) }
+
+    it 'returns a no content response' do
+      request
+
+      expect(response).to have_http_status(:no_content)
+    end
+
+    it 'deletes the appointment' do
+      appointment
+      expect { request }.to change(Appointment, :count).by(-1)
+    end
+
+    context 'when the id is invalid' do
+      it 'returns a not found response' do
+        appointment.destroy
+
+        request
+
+        expect(response).to have_http_status(:not_found)
       end
     end
   end
