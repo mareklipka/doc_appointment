@@ -10,8 +10,8 @@ RSpec.describe Appointment do
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of :appointee_name }
-    it { is_expected.to validate_presence_of :appointee_phone }
+    it { is_expected.to validate_presence_of :patient_name }
+    it { is_expected.to validate_presence_of :patient_phone }
 
     it 'validates that the slot is free' do
       appointment.slot = create(:slot, :with_appointment)

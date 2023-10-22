@@ -3,7 +3,7 @@
 class Appointment < ApplicationRecord
   belongs_to :slot
 
-  validates :appointee_name, :appointee_phone, presence: true
+  validates :patient_name, :patient_phone, presence: true
 
   validate :slot_is_free, if: :slot_id_changed?
 

@@ -3,8 +3,8 @@
 class CreateAppointments < ActiveRecord::Migration[7.1]
   def change
     create_table :appointments do |t|
-      t.string :appointee_name
-      t.string :appointee_phone
+      t.string :patient_name
+      t.string :patient_phone
       t.references :slot, null: false, foreign_key: true
 
       t.timestamps

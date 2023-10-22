@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :appointment do
-    appointee_name { FFaker::Name.name }
-    appointee_phone { FFaker::PhoneNumber.phone_number }
+    patient_name { FFaker::Name.name }
+    patient_phone { FFaker::PhoneNumber.phone_number }
     slot
   end
 end
