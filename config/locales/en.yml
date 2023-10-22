@@ -28,4 +28,11 @@
 #       enabled: "ON"
 
 en:
+  activerecord:
+    errors:
+      models:
+        appointment:
+          attributes:
+            slot_id:
+              not_free: is not free
   hello: "Hello world"

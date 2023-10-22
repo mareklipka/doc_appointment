@@ -38,6 +38,8 @@ end
 group :development, :test do
   gem 'brakeman', require: false
   gem 'bundler-audit', require: false
+  gem 'factory_bot_rails', '~> 6.2.0'
+  gem 'ffaker'
   gem 'pry', '~> 0.14.2'
   gem 'rspec-rails', '~> 6.0.0'
 end
