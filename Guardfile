@@ -55,6 +55,10 @@ guard :rspec, cmd: 'bundle exec rspec' do
     ]
   end
 
+  watch(%r{^app/api/(.+)\.rb$}) do |m|
+    rspec.spec.call("requests/#{m[1]}")
+  end
+
   # Rails config changes
   watch(rails.spec_helper)     { rspec.spec_dir }
   watch(rails.routes)          { "#{rspec.spec_dir}/routing" }
