@@ -3,11 +3,13 @@
 require 'rails_helper'
 
 describe DocAppointmentAPI::Doctors do
-  describe 'GET /api/v1/doctors' do
+  describe 'GET /api/doctors' do
     subject(:request) do
-      create_list(:doctor, 3)
+      get '/api/doctors'
+    end
 
-      get '/api/v1/doctors'
+    before do
+      create_list(:doctor, 3)
     end
 
     it 'returns a successful response' do
@@ -18,6 +20,11 @@ describe DocAppointmentAPI::Doctors do
     it 'returns a JSON response' do
       request
       expect(response.content_type).to eq('application/json')
+    end
+
+    it 'returns the actual doctors data' do
+      request
+      expect(response.body).to include(*Doctor.pluck(:name))
     end
   end
 end

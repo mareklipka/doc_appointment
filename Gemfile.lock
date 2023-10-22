@@ -127,6 +127,8 @@ GEM
       rack-accept
     grape-swagger (1.6.1)
       grape (~> 1.3)
+    grape-swagger-rails (0.4.0)
+      railties (>= 6.0.6.1)
     guard (2.18.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -336,6 +338,7 @@ DEPENDENCIES
   ffaker
   grape (~> 1.8)
   grape-swagger (~> 1.6)
+  grape-swagger-rails (~> 0.4.0)
   guard-rspec
   jbuilder
   pg (~> 1.1)

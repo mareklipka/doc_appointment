@@ -5,4 +5,6 @@ class Slot < ApplicationRecord
 
   belongs_to :doctor
   has_one :appointment, dependent: :destroy
+
+  scope :free, -> { where.missing(:appointment) }
 end

@@ -7,6 +7,8 @@ module DocAppointmentAPI
       get do
         Doctor.all
       end
+
+      mount Slots
     end
   end
 end

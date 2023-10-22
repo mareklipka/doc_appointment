@@ -5,5 +5,7 @@ module DocAppointmentAPI
     format :json
 
     mount ::DocAppointmentAPI::Doctors
+
+    add_swagger_documentation
   end
 end
