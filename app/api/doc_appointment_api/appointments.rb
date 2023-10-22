@@ -22,6 +22,12 @@ module DocAppointmentAPI
           { errors: appointment.errors }
         end
       end
+
+      desc 'Return all appointments'
+
+      get do
+        present Appointment.all
+      end
     end
   end
 end

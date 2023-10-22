@@ -33,6 +33,7 @@ gem 'bootsnap', require: false
 
 # API
 gem 'grape', '~> 1.8'
+gem 'grape-entity', '~> 1.0'
 gem 'grape-swagger', '~> 1.6'
 
 group :test do

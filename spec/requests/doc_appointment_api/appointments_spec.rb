@@ -46,4 +46,38 @@ describe DocAppointmentAPI::Appointments do
       end
     end
   end
+
+  describe 'GET /api/v1/appointments' do
+    subject(:request) do
+      get '/api/appointments'
+    end
+
+    before do
+      create_list(:appointment, 3)
+    end
+
+    it 'returns a successful response' do
+      request
+
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'returns a JSON response' do
+      request
+
+      expect(response.content_type).to eq('application/json')
+    end
+
+    it 'returns the actual appointments data' do
+      request
+
+      expect(response.body).to include(*Appointment.pluck(:patient_name))
+    end
+
+    it 'returns hours of the appointments' do
+      request
+
+      expect(response.body).to include(*Slot.joins(:appointment).pluck(:starts_at).map(&:to_json))
+    end
+  end
 end
