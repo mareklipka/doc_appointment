@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_22_085007) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_22_094623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,8 +25,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_22_085007) do
 
   create_table "doctors", force: :cascade do |t|
     t.string "name"
-    t.string "start_hour"
-    t.string "end_hour"
+    t.integer "start_hour"
+    t.integer "end_hour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,7 +36,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_22_085007) do
     t.datetime "starts_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["doctor_id", "starts_at"], name: "index_slots_on_doctor_id_and_starts_at", unique: true
     t.index ["doctor_id"], name: "index_slots_on_doctor_id"
+    t.index ["starts_at"], name: "index_slots_on_starts_at"
   end
 
   add_foreign_key "appointments", "slots"
