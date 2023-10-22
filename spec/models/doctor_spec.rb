@@ -3,7 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Doctor do
-  subject(:doctor) { described_class.new }
+  describe 'associations' do
+    it { is_expected.to have_many :slots }
+  end
 
   describe 'validations' do
     it { is_expected.to validate_presence_of :name }
@@ -11,15 +13,15 @@ RSpec.describe Doctor do
     it { is_expected.to validate_presence_of :end_hour }
 
     it do
-      expect(doctor).to validate_numericality_of(:start_hour).only_integer
-                                                             .is_greater_than_or_equal_to(0)
-                                                             .is_less_than_or_equal_to(24)
+      is_expected.to(
+        validate_numericality_of(:start_hour).only_integer.is_in(Doctor::POSSIBLE_HOURS)
+      )
     end
 
     it do
-      expect(doctor).to validate_numericality_of(:end_hour).only_integer
-                                                           .is_greater_than_or_equal_to(0)
-                                                           .is_less_than_or_equal_to(24)
+      is_expected.to(
+        validate_numericality_of(:end_hour).only_integer.is_in(Doctor::POSSIBLE_HOURS)
+      )
     end
   end
 end

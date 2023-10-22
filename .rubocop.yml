@@ -6,6 +6,9 @@ require:
 Style/Documentation:
   Enabled: false
 
+RSpec/ImplicitSubject:
+  Enabled: false
+
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
