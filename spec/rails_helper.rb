@@ -1,5 +1,18 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.minimum_coverage 95
+SimpleCov.minimum_coverage_by_file 95
+SimpleCov.maximum_coverage_drop 3
+SimpleCov.start('rails') do
+  add_filter '/bin/'
+  add_filter '/db/'
+  add_filter '/spec/'
+  add_filter '/test/'
+  add_filter '/vendor/'
+  add_filter '/config/'
+end
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'

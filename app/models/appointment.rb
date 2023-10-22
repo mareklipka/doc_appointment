@@ -7,10 +7,6 @@ class Appointment < ApplicationRecord
 
   validate :slot_is_free, if: :slot_id_changed?
 
-  def entity
-    Entity.new(self)
-  end
-
   class Entity < Grape::Entity
     expose :id
     expose :patient_name
