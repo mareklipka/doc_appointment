@@ -28,6 +28,27 @@ module DocAppointmentAPI
       get do
         present Appointment.all
       end
+
+      route_param :id do
+        desc 'Update an appointment'
+
+        params do
+          optional :slot_id, type: Integer
+          optional :patient_name, type: String
+          optional :patient_phone, type: String
+        end
+
+        patch do
+          appointment = Appointment.find(params[:id])
+
+          if appointment.update(declared(params, include_missing: false))
+            status :no_content
+          else
+            status :unprocessable_entity
+            { errors: appointment.errors }
+          end
+        end
+      end
     end
   end
 end

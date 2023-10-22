@@ -80,4 +80,51 @@ describe DocAppointmentAPI::Appointments do
       expect(response.body).to include(*Slot.joins(:appointment).pluck(:starts_at).map(&:to_json))
     end
   end
+
+  describe 'PATCH /api/v1/appointments/:id' do
+    subject(:request) do
+      patch "/api/appointments/#{appointment.id}", params:
+    end
+
+    let(:appointment) { create(:appointment) }
+
+    context 'when the params are valid' do
+      let(:params) do
+        {
+          patient_name: FFaker::Name.name,
+          patient_phone: FFaker::PhoneNumber.phone_number
+        }
+      end
+
+      it 'returns a non content response' do
+        request
+
+        expect(response).to have_http_status(:no_content)
+      end
+
+      it 'updates the appointment' do
+        expect { request }.to change { appointment.reload.patient_name }.to(params[:patient_name])
+      end
+    end
+
+    context 'when the params are invalid' do
+      let(:params) do
+        {
+          patient_name: ''
+        }
+      end
+
+      it 'returns an unprocessable entity response' do
+        request
+
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+
+      it 'returns an error message' do
+        request
+
+        expect(response.body).to include('errors')
+      end
+    end
+  end
 end
