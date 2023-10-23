@@ -15,6 +15,7 @@ Metrics/BlockLength:
     - 'spec/**/*.rb'
     - 'Guardfile'
     - 'app/api/**/*.rb'
+    - 'config/environments/**/*.rb'
 
 AllCops:
   NewCops: enable

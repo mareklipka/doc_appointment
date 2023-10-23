@@ -47,6 +47,8 @@ end
 
 group :development, :test do
   gem 'brakeman', require: false
+  # Detect N+1 queries
+  gem 'bullet', '~> 7.1'
   gem 'bundler-audit', require: false
   gem 'factory_bot_rails', '~> 6.2.0'
   gem 'ffaker'
