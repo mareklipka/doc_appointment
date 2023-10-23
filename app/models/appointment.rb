@@ -12,8 +12,16 @@ class Appointment < ApplicationRecord
     expose :patient_name
     expose :patient_phone
     expose :slot_starts_at, as: :starts_at
+    expose :slot_id
+    expose :created_at
+    expose :updated_at
+    expose :doctor_name
 
     private
+
+    def doctor_name
+      object.slot.doctor.name
+    end
 
     def slot_starts_at
       object.slot.starts_at

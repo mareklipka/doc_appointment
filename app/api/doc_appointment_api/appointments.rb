@@ -26,7 +26,7 @@ module DocAppointmentAPI
       desc 'Return all appointments'
 
       get do
-        present Appointment.all
+        present Appointment.includes(slot: :doctor)
       end
 
       route_param :id do

@@ -79,6 +79,12 @@ describe DocAppointmentAPI::Appointments do
 
       expect(response.body).to include(*Slot.joins(:appointment).pluck(:starts_at).map(&:to_json))
     end
+
+    it 'returns the doctor name' do
+      request
+
+      expect(response.body).to include(*Doctor.joins(slots: :appointment).pluck(:name))
+    end
   end
 
   describe 'PATCH /api/v1/appointments/:id' do
