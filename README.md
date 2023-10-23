@@ -1,24 +1,21 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Prerequisites
 
-Things you may want to cover:
+* Ruby 3.2.2
+* Bundler
 
-* Ruby version
+### Installation
 
-* System dependencies
+1. Clone the repository
+2. Install dependencies: `bundle install`
+3. Set up the database: `rails db:create db:schema:load`
+4. Load some example data: `rails db:seed`
+5. Start the server: `rails s`
 
-* Configuration
+### Usage
 
-* Database creation
+There's a swagger JSON doc file at http://localhost:3000/api/swagger_doc.json
 
-* Database initialization
+### Running the Tests
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Run the test suite with the following command: `rails spec`

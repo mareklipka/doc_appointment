@@ -8,3 +8,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+5.times do
+  doctor = Doctor.create(name: FFaker::Name.name, start_hour: 8, end_hour: 16)
+
+  SlotCreator.call(doctor, Time.zone.now, 1.month.from_now)
+end
