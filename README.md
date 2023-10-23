@@ -14,7 +14,7 @@
 
 ### Usage
 
-There's a swagger JSON doc file at http://localhost:3000/api/swagger_doc.json
+A swagger documentation is available under http//localhost:3000/swagger
 
 ### Running the Tests
 

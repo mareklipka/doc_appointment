@@ -16,6 +16,9 @@ gem 'puma', '>= 5.0'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
+# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem 'sprockets-rails'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -35,6 +38,7 @@ gem 'bootsnap', require: false
 gem 'grape', '~> 1.8'
 gem 'grape-entity', '~> 1.0'
 gem 'grape-swagger', '~> 1.6'
+gem 'grape-swagger-rails'
 
 group :test do
   gem 'shoulda-matchers', '~> 5.0'
