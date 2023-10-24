@@ -14,7 +14,7 @@
 
 ### Usage
 
-A swagger documentation is available under http//localhost:3000/swagger
+A swagger documentation is available under http://localhost:3000/swagger
 
 ### Running the Tests
 
